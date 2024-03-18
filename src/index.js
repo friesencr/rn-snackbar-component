@@ -28,9 +28,8 @@ class Snackbar extends Component {
   }
 
   handleLayoutChange(event) {
-    this.setState({ hideDistance: event.nativeEvent.layout.height })
+    this.setState({ hideDistance: event.layout.height })
   }
-
 
   componentDidMount() {
     this.state.translateValue.setValue(this.props.visible ? 1 : 0)
@@ -114,7 +113,7 @@ class Snackbar extends Component {
             },
             containerStyle,
           ]}
-          onLayout={(e) => this.handleLayoutChange(e)}
+          onLayout={this.handleLayoutChange}
         >
           {String(message) === message ? (
             <Text style={[styles.text_msg, messageStyle]}>
